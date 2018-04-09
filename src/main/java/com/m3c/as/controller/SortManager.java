@@ -3,17 +3,19 @@ package com.m3c.as.controller;
 import com.m3c.as.Starter;
 import com.m3c.as.display.DisplayManger;
 import com.m3c.as.sorters.Sorter;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.logging.Logger;
+
 
 public class SortManager {
 
     private static final String LOG_PROPERTIES_FILE = "resources/log4j.properties";
-    private static org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(SortManager.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(SortManager.class);
 
     private int[] createArray(int size)  {
         Random random = new Random();
