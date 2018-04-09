@@ -1,5 +1,7 @@
 package com.m3c.as.sorters.binaryTree;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +11,7 @@ public class BinaryTreeImpl implements BinaryTree {
     private Node root;
     private static final String NO_ELEMENT = "ELEMENT NOT FOUND";
     private int elementCount;
+    private final Logger LOGGER = Logger.getLogger(BinaryTreeImpl.class);
 
     public BinaryTreeImpl(Node root) {
         if(root != null)
@@ -31,16 +34,19 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public int getRootElement() {
+        LOGGER.trace("get root element called ");
         return root.getValue();
     }
 
     @Override
     public int getNumberOfElements() {
+        LOGGER.trace("get number of elements called ");
         return elementCount;
     }
 
     @Override
     public void addElement(int element) {
+        LOGGER.trace("Add node to tree : " + element);
         Node currentNode = root;
         Node previousNode = root;
 
@@ -74,6 +80,7 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public boolean findElement(int value) {
+        LOGGER.trace("Find element called with value: " + value);
         Node currentNode = root;
 
         while(currentNode != null)
@@ -89,6 +96,7 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public int getLeftChild(int element) throws ElementNotFoundException {
+        LOGGER.trace("get left child called, of element: " + element);
         Node currentNode = root;
 
         while (currentNode != null)
@@ -103,6 +111,7 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public int getRightChild(int element) throws ElementNotFoundException {
+        LOGGER.trace("get right child called, of element: " + element);
         Node currentNode = root;
 
         while (currentNode != null)
@@ -117,6 +126,7 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public List<Integer> getSortedTreeAsc() {
+        LOGGER.trace("get sorted tree ascending called ");
         List<Integer> sortedListAsc = new ArrayList<Integer>();
         inOrderTraversal(root, sortedListAsc);
         return sortedListAsc;
@@ -124,6 +134,7 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public List<Integer> getSortedTreeDesc() {
+        LOGGER.trace("get sorted tree descending called ");
         List<Integer> sortedListDesc = new ArrayList<Integer>();
         reverseInOrderTraversal(root, sortedListDesc);
         return sortedListDesc;
